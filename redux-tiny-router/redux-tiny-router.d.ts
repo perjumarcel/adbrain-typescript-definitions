@@ -1,7 +1,11 @@
 declare module 'redux-tiny-router' {
     interface RouterState {
+        params: {
+            AppTypeName?:string;
+        };
         path?:string;
         src?:string;
+        splat?:string;
     }
 
     function applyMiddleware(...props);
