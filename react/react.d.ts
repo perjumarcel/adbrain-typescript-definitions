@@ -1006,6 +1006,11 @@ declare namespace JSX {
         circle: React.SVGProps;
         defs: React.SVGProps;
         ellipse: React.SVGProps;
+        // @TODO check if any should be React.SVGProps
+        feOffset: any;
+        feGaussianBlur: any
+        feBlend: any;
+        filter: any;
         g: React.SVGProps;
         image: React.SVGProps;
         line: React.SVGProps;
