@@ -13,7 +13,7 @@ declare namespace __React {
         function render<P>(
             element: DOMElement<P>,
             container: Element,
-            callback?: (element: Element) => any): DOMElement;
+            callback?: (element: Element) => any): Element;
         function render<P, S>(
             element: ClassicElement<P>,
             container: Element,
