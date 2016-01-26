@@ -16,6 +16,7 @@ declare module angular.material {
         targetEvent?: MouseEvent;
         resolve?: {[index: string]: angular.IPromise<any>}
         controllerAs?: string;
+        bindToController?: boolean;
         parent?: string|Element|JQuery; // default: root node
         disableParentScroll?: boolean; // default: true
     }
@@ -76,6 +77,7 @@ declare module angular.material {
         resolve?: {[index: string]: angular.IPromise<any>}
         controllerAs?: string;
         parent?: string|Element|JQuery; // default: root node
+        fullscreen?: boolean;
         onComplete?: Function;
     }
 
@@ -83,7 +85,7 @@ declare module angular.material {
         show(dialog: IDialogOptions|IAlertDialog|IConfirmDialog): angular.IPromise<any>;
         confirm(): IConfirmDialog;
         alert(): IAlertDialog;
-        hide(response?: any): void;
+        hide(response?: any): angular.IPromise<any>;
         cancel(response?: any): void;
     }
 

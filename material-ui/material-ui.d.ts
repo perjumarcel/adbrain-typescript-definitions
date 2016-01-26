@@ -123,6 +123,7 @@ declare namespace __MaterialUI {
     }
 
     interface AppCanvasProps extends React.Props<AppCanvas> {
+        style?: React.CSSProperties;
     }
     export class AppCanvas extends React.Component<AppCanvasProps, {}> {
     }
@@ -319,7 +320,7 @@ declare namespace __MaterialUI {
         interface DatePickerProps extends React.Props<DatePicker> {
             autoOk?: boolean;
             defaultDate?: Date;
-            formatDate?: string;
+            formatDate?: (date:Date) => string;
             hintText?: string;
             floatingLabelText?: string;
             hideToolbarYearChange?: boolean;
@@ -336,6 +337,7 @@ declare namespace __MaterialUI {
             onTouchTap?: React.TouchEventHandler;
             shouldDisableDate?: (day: Date) => boolean;
             showYearSelector?: boolean;
+            style?: React.CSSProperties;
             textFieldStyle?: React.CSSProperties;
         }
         export class DatePicker extends React.Component<DatePickerProps, {}> {
@@ -787,6 +789,7 @@ declare namespace __MaterialUI {
         menuItemStyle?: React.CSSProperties;
         selectedIndex?: number;
         underlineStyle?: React.CSSProperties;
+        underlineFocusStyle?: React.CSSProperties;
         iconStyle?: React.CSSProperties;
         labelStyle?: React.CSSProperties;
         style?: React.CSSProperties;
@@ -1140,7 +1143,7 @@ declare namespace __MaterialUI {
 
     namespace Tabs {
         interface TabProps extends React.Props<Tab> {
-            label?: string;
+            label?: any;
             value?: string;
             selected?: boolean;
             width?: string;
@@ -1257,7 +1260,9 @@ declare namespace __MaterialUI {
 
         interface TableRowColumnProps extends React.Props<TableRowColumn> {
             columnNumber?: number;
+            colSpan?: number;
             hoverable?: boolean;
+            onClick?: React.MouseEventHandler;
             onHover?: (e: React.MouseEvent, column: number) => void;
             onHoverExit?: (e: React.MouseEvent, column: number) => void;
             style?: React.CSSProperties;
@@ -1291,7 +1296,7 @@ declare namespace __MaterialUI {
         format?: string;
         pedantic?: boolean;
         style?: __React.CSSProperties;
-        textFieldStye?: __React.CSSProperties;
+        textFieldStyle?: __React.CSSProperties;
         autoOk?: boolean;
         openDialog?: () => void;
         onFocus?: React.FocusEventHandler;
@@ -1532,19 +1537,19 @@ declare namespace __MaterialUI {
         export class MenuDivider extends React.Component<MenuDividerProps, {}>{
         }
     }
-    
+
     namespace GridList {
-        
+
         interface GridListProps extends React.Props<GridList> {
             cols?: number;
             padding?: number;
             cellHeight?: number;
             style?: React.CSSProperties;
         }
-        
+
         export class GridList extends React.Component<GridListProps, {}>{
         }
-        
+
         interface GridTileProps extends React.Props<GridTile> {
             title?: string;
             subtitle?: __React.ReactNode;
@@ -1557,10 +1562,10 @@ declare namespace __MaterialUI {
             rootClass?: string | __React.Component<any,any>;
             style?: React.CSSProperties;
         }
-        
+
         export class GridTile extends React.Component<GridTileProps, {}>{
         }
-        
+
     }
 }    // __MaterialUI
 
