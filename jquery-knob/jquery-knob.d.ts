@@ -58,6 +58,10 @@ declare module JQueryKnob {
 		 */
 		width?: number;
 		/**
+		 * dial height
+		 */
+		height?: number;
+		/**
 		 * default=true | false=hide input
 		 */
 		displayInput?: boolean;
