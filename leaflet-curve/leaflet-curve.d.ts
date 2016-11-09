@@ -3,9 +3,9 @@
 // Definitions by: Onikiienko <https://github.com/onikiienko>
 // Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
-/// <reference path="../leaflet/leaflet.d.ts" />
+/// <reference path="../leaflet/leaflet-0.7.d.ts" />
 
-declare module L {
+declare namespace L {
 	/**
 	 * Drawing Bezier curves and other complex shapes.
 	 */

@@ -1,7 +1,7 @@
-// Type definitions for bull 0.7.0
+// Type definitions for bull 1.0.0
 // Project: https://github.com/OptimalBits/bull
 // Definitions by: Bruno Grieder <https://github.com/bgrieder>
-// Definitions: https://github.com/borisyankov/DefinitelyTyped
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference path="../redis/redis.d.ts" />
 
@@ -16,7 +16,7 @@ declare module "bull" {
     */
     function Bull(queueName: string, redisPort: number, redisHost: string, redisOpt?: Redis.ClientOpts): Bull.Queue;
 
-    module Bull {
+    namespace Bull {
 
         export interface DoneCallback {
             (error?: Error, value?: any): void
@@ -24,7 +24,7 @@ declare module "bull" {
 
         export interface Job {
 
-            id: string
+            jobId: string
 
             /**
             * The custom data passed when the job was created
@@ -282,7 +282,7 @@ declare module "bull/lib/priority-queue" {
      */
     function PQueue(queueName: string, redisPort: number, redisHost: string, redisOpt?: Redis.ClientOpts): PQueue.PriorityQueue;
 
-    module PQueue {
+    namespace PQueue {
 
         export interface AddOptions extends Bull.AddOptions {
 

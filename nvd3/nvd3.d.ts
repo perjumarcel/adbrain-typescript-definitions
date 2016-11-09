@@ -1,16 +1,16 @@
 // Type definitions for nvd3 1.8.1
 // Project: https://github.com/novus/nvd3
 // Definitions by: Peter Mitchell <https://github.com/PjMitchell/>
-// Definitions: https://github.com/borisyankov/DefinitelyTyped
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /// <reference path="../d3/d3.d.ts" />
-declare module nv {
+declare namespace nv {
 
 //#region Core Interfaces
 	interface Margin {
 		left?: number,
 		right?: number,
-		top?: number, 
+		top?: number,
 		bottom?: number
 	}
 
@@ -90,7 +90,7 @@ declare module nv {
         /*Colors to use for the different data. If an array is given, it is converted to a function automatically.*/
         color(value: string[]): this;
         /*Colors to use for the different data. If an array is given, it is converted to a function automatically.*/
-        color(func: (d: any, i: number) => string): this;	
+        color(func: (d: any, i: number) => string): this;
         expanded(): boolean;
         expanded(value: boolean): this;
         /*The height the graph or component created inside the SVG should be made*/
@@ -108,7 +108,7 @@ declare module nv {
         /*Specifies how much spacing there is between legend items.*/
         padding(value: number): this;
         radioButtonMode(): boolean;
-        //If true, clicking legend items will cause it to behave like a radio button. (only one can be selected at 
+        //If true, clicking legend items will cause it to behave like a radio button. (only one can be selected at
         radioButtonMode(value: boolean): this;
         rightAlign(): boolean;
         rightAlign(value: boolean): this;
@@ -119,13 +119,50 @@ declare module nv {
         //Options are "classic" and "furious"
         vers(): string;
         //Options are "classic" and "furious"
-        vers(value: string): this;        
+        vers(value: string): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
-        width(value: number): this;	     
+        width(value: number): this;
     }
-	
+
+    interface Focus extends Nvd3Element {
+        color(value: string[]): this;
+        color(func: (d: any, i: number) => string): this;
+        width(): number;
+        width(value: number): this;
+        height(): number;
+        height(value: number): this;
+        margin(): Margin;
+        margin(value: Margin): this;
+        x(): (d: any) => any;
+        x(func: (d: any) => any): this;
+        y(): (d: any) => number;
+        y(func: (d: any) => number): this;
+        showXAxis(): boolean;
+        showXAxis(value: boolean): this;
+        showYAxis(): boolean;
+        showYAxis(value: boolean): this;
+        brushExtent(): [number, number] | [[number, number], [number, number]];
+        brushExtent(value: [number, number] | [[number, number], [number, number]]) : this;
+        duration(): number;
+        duration(value: number): this;
+        xTickFormat(): (d: any) => string;
+        xTickFormat(format: (t: any) => string): this;
+        xTickFormat(format: string): this;
+        xTickFormat(format: (d: any, i: any) => string): this;
+        yTickFormat(): (d: any) => string;
+        yTickFormat(format: (t: any) => string): this;
+        yTickFormat(format: string): this;
+        yTickFormat(format: (d: any, i: any) => string): this;
+        interpolate(): string;
+        interpolate(value: string): this;
+        rightAlignYAxis(): boolean;
+        rightAlignYAxis(value: boolean): this;
+        syncBrushing(): boolean;
+        syncBrushing(value: boolean): this;
+    }
+
 	interface Nvd3Axis extends d3.svg.Axis {
         axisLabel(): string;
         axisLabel(value: string): this;
@@ -146,7 +183,7 @@ declare module nv {
         /*Object containing the margins for the chart or component. You can specify only certain margins in the object to change just those parts.*/
         margin(value: Margin): this;
         orient(): string;
-        orient(orientation: string): this;        
+        orient(orientation: string): this;
         range(): number[];
         range(range: number[]): this;
         rangeBand(): number;
@@ -178,7 +215,7 @@ declare module nv {
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
-        width(value: number): this;			
+        width(value: number): this;
 	}
 
     interface BoxPlot extends Nvd3Element {
@@ -201,7 +238,7 @@ declare module nv {
         /*Object containing the margins for the chart or component. You can specify only certain margins in the object to change just those parts.*/
         margin(value: Margin): this;
         maxBoxWidth(): number;
-        maxBoxWidth(value: number): this;	
+        maxBoxWidth(value: number): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
@@ -271,7 +308,7 @@ declare module nv {
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
-        width(value: number): this;        
+        width(value: number): this;
     }
 
     interface CandlestickBar extends Nvd3Element {
@@ -312,7 +349,7 @@ id(value: number|string): this;
         /*Object containing the margins for the chart or component. You can specify only certain margins in the object to change just those parts.*/
         margin(value: Margin): this;
         open(): (d: any) => number;
-        open(func: (d: any) => number): this;	
+        open(func: (d: any) => number): this;
         padData(): boolean;
         padData(value: boolean): this;
         /* The width the graph or component created inside the SVG should be made*/
@@ -444,7 +481,7 @@ id(value: number|string): this;
         size(value: number): this;
         width(): number;
         width(value: number): this;
-        
+
 
     }
 
@@ -539,7 +576,7 @@ id(value: number|string): this;
         /*Function to define if a line is a normal line or if it fills in the area. Notice the default gets the value from the line's definition in data. If a non-function is given, it the value is used for all lines.*/
         isArea(value: boolean): this;
         /*Function to define if a line is a normal line or if it fills in the area. Notice the default gets the value from the line's definition in data. If a non-function is given, it the value is used for all lines.*/
-        isArea(func: (d: any) => boolean): this;       
+        isArea(func: (d: any) => boolean): this;
     }
 
     interface MultiBar extends Nvd3Element {
@@ -558,7 +595,7 @@ id(value: number|string): this;
         /**/
         disabled(): boolean[];
         /**/
-        disabled(value: boolean[]): this;        
+        disabled(value: boolean[]): this;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
         duration(): number;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
@@ -650,7 +687,7 @@ id(value: number|string): this;
         /**/
         disabled(): boolean[];
         /**/
-        disabled(value: boolean[]): this;        
+        disabled(value: boolean[]): this;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
         duration(): number;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
@@ -700,7 +737,7 @@ id(value: number|string): this;
         /*.*/
         valuePadding(): number;
         /**/
-        valuePadding(value: number): this;      
+        valuePadding(value: number): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
@@ -838,7 +875,7 @@ id(value: number|string): this;
         /*Deprecated. Use dimensionsNames instead. */
         dimensions(): any;
         /*Deprecated. Use dimensionsNames instead. .*/
-        dimensions(value: any): this;        
+        dimensions(value: any): this;
         /*The height the graph or component created inside the SVG should be made*/
         height(): number;
         /*The height the graph or component created inside the SVG should be made.*/
@@ -1030,7 +1067,7 @@ id(value: number|string): this;
         /**/
         padDataOuter(): number;
         /**/
-        padDataOuter(value: number): this;	
+        padDataOuter(value: number): this;
         /* Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
         pointActive(): (d: any) => boolean;
         /*Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
@@ -1204,6 +1241,10 @@ id(value: number|string): this;
         style(offset: 'expand'): this;
         style(offset: 'stack_percent'): this;
         style(offset: string): this;
+        width(): number;
+        width(value: number): this;
+        height(): number;
+        height(value: number): this;
     }
 
     interface Sunburst extends Nvd3Element {
@@ -1308,8 +1349,8 @@ id(value: number|string): this;
     }
 
 //#endregion
-    
-//#region Charts  
+
+//#region Charts
     interface BoxPlotChart extends Chart {
         boxplot: BoxPlot;
         xAxis: Nvd3Axis;
@@ -1345,7 +1386,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -1447,7 +1488,7 @@ id(value: number|string): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
-        width(value: number): this; 
+        width(value: number): this;
 	}
 
     interface CandlestickBarChart extends Chart {
@@ -1490,7 +1531,7 @@ id(value: number|string): this;
         high(): (d: any) => number;
         high(func: (d: any) => number): this;
         id(): any;
-        id(value: number|string): this; 
+        id(value: number|string): this;
         /*A master flag for turning chart interaction on and off. This overrides all tooltip, voronoi, and guideline options.*/
         interactive(): boolean;
         /*A master flag for turning chart interaction on and off. This overrides all tooltip, voronoi, and guideline options.*/
@@ -1518,7 +1559,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -1570,7 +1611,7 @@ id(value: number|string): this;
         yScale(): any;
         /* Override the default scale type for the y axis*/
         yScale(value: any): this;
-    }   
+    }
 
     interface CumulativeLineChart extends LineChart {
         controls: Legend;
@@ -1623,7 +1664,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -1639,7 +1680,7 @@ id(value: number|string): this;
         /*Deprecated. Use chart.tooltip.enabled or chart.interactive to control if tooltips are enabled or not.*/
         tooltips(): boolean;
         /*Deprecated. Use chart.tooltip.enabled or chart.interactive to control if tooltips are enabled or not.*/
-        tooltips(value: boolean): this;       
+        tooltips(value: boolean): this;
         /*D3 Format object for the label of pie/donut, discrete bar and multibar charts.*/
         valueFormat(): string;
         /*D3 Format object for the label of pie/donut, discrete bar and multibar charts.*/
@@ -1741,7 +1782,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -1753,11 +1794,11 @@ id(value: number|string): this;
         /*Deprecated. Use chart.tooltip.enabled or chart.interactive to control if tooltips are enabled or not.*/
         tooltips(): boolean;
         /*Deprecated. Use chart.tooltip.enabled or chart.interactive to control if tooltips are enabled or not.*/
-        tooltips(value: boolean): this;  
+        tooltips(value: boolean): this;
         /*Sets the chart to use a guideline and floating tooltip instead of requiring the user to hover over specific hotspots. Turning this on will set the 'interactive' and 'useVoronoi' options to false to avoid conflicting.*/
         useInteractiveGuideline(): boolean;
         /*Sets the chart to use a guideline and floating tooltip instead of requiring the user to hover over specific hotspots. Turning this on will set the 'interactive' and 'useVoronoi' options to false to avoid conflicting.*/
-        useInteractiveGuideline(value: boolean): this;      
+        useInteractiveGuideline(value: boolean): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
@@ -1801,6 +1842,7 @@ id(value: number|string): this;
         yAxis: Nvd3Axis;
         legend: Legend;
         tooltip: Tooltip;
+        focus: Focus;
 
         clearHighlights(): this;
         /*If true, masks lines within the X and Y scales using a clip-path*/
@@ -1880,7 +1922,7 @@ id(value: number|string): this;
         /**/
         padDataOuter(): number;
         /**/
-        padDataOuter(value: number): this;	
+        padDataOuter(value: number): this;
         /* Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
         pointActive(): (d: any) => boolean;
         /*Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
@@ -1918,7 +1960,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -2086,7 +2128,7 @@ id(value: number|string): this;
         /**/
         padDataOuter(): number;
         /**/
-        padDataOuter(value: number): this;	
+        padDataOuter(value: number): this;
         /* Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
         pointActive(): (d: any) => boolean;
         /*Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
@@ -2169,7 +2211,7 @@ id(value: number|string): this;
         /* Override the default scale type for the y axis*/
         yScale(value: any): this;
     }
-    
+
     interface LineWithFocusChart extends Chart {
         legend: Legend;
         lines: Line;
@@ -2263,7 +2305,7 @@ id(value: number|string): this;
         /**/
         padDataOuter(): number;
         /**/
-        padDataOuter(value: number): this;	
+        padDataOuter(value: number): this;
         /* Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
         pointActive(): (d: any) => boolean;
         /*Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
@@ -2386,7 +2428,7 @@ id(value: number|string): this;
         /**/
         disabled(): boolean[];
         /**/
-        disabled(value: boolean[]): this;        
+        disabled(value: boolean[]): this;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
         duration(): number;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
@@ -2436,11 +2478,11 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
-        showYAxis(value: boolean): this;        
+        showYAxis(value: boolean): this;
         /*.*/
         stacked(): boolean;
         /**/
@@ -2506,7 +2548,7 @@ id(value: number|string): this;
         yScale(value: any): this;
 
     }
-    
+
     interface MultiBarHorizontalChart extends Chart {
         multibar: MultiBar;
         legend: Legend;
@@ -2534,7 +2576,7 @@ id(value: number|string): this;
         /**/
         disabled(): boolean[];
         /**/
-        disabled(value: boolean[]): this;        
+        disabled(value: boolean[]): this;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
         duration(): number;
         /*Duration in ms to take when updating chart. For things like bar charts, each bar can animate by itself but the total time taken should be this value.*/
@@ -2573,11 +2615,11 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
-        showYAxis(value: boolean): this;        
+        showYAxis(value: boolean): this;
         /*.*/
         stacked(): boolean;
         /**/
@@ -2597,7 +2639,7 @@ id(value: number|string): this;
         /*.*/
         valuePadding(): number;
         /**/
-        valuePadding(value: number): this; 
+        valuePadding(value: number): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
@@ -2711,7 +2753,7 @@ id(value: number|string): this;
         /* */
         yDomain2(value: number[]): this;
     }
-    
+
     interface OhlcBarChart extends Chart {
         bars: OhlcBar;
         legend: Legend;
@@ -2780,7 +2822,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -2832,7 +2874,7 @@ id(value: number|string): this;
         yScale(): any;
         /* Override the default scale type for the y axis*/
         yScale(value: any): this;
-    }   
+    }
 
     interface ParallelCoordinatesChart extends Chart {
         parallelCoordinates: ParallelCoordinates;
@@ -2859,11 +2901,11 @@ id(value: number|string): this;
         /*Deprecated. Use dimensionsNames instead. */
         dimensions(): any;
         /*Deprecated. Use dimensionsNames instead. .*/
-        dimensions(value: any): this;    
+        dimensions(value: any): this;
         /**/
         displayBrush(): boolean;
         /**/
-        displayBrush(value: boolean): this;    
+        displayBrush(value: boolean): this;
         /*The height the graph or component created inside the SVG should be made*/
         height(): number;
         /*The height the graph or component created inside the SVG should be made.*/
@@ -2879,11 +2921,11 @@ id(value: number|string): this;
         /**/
         noData(): string;
         /**/
-        noData(value: string): this; 
+        noData(value: string): this;
         /**/
         showLegend(): boolean;
         /**/
-        showLegend(value: boolean): this;  
+        showLegend(value: boolean): this;
         /* The width the graph or component created inside the SVG should be made*/
         width(): number;
         /*The width the graph or component created inside the SVG should be made.*/
@@ -3116,7 +3158,7 @@ id(value: number|string): this;
         /**/
         padDataOuter(): number;
         /**/
-        padDataOuter(value: number): this;	
+        padDataOuter(value: number): this;
         /* Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
         pointActive(): (d: any) => boolean;
         /*Function used to determine if scatter points are active or not, returns false to denote them as inactive and true for active.*/
@@ -3146,7 +3188,7 @@ id(value: number|string): this;
         /**/
         showDistX(): boolean;
         /**/
-        showDistX(value: boolean): this;        
+        showDistX(value: boolean): this;
         /**/
         showDistY(): boolean;
         /**/
@@ -3162,7 +3204,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -3178,7 +3220,7 @@ id(value: number|string): this;
         /**/
         tooltipYContent(): (d: any) => string;
         /**/
-        tooltipYContent(func: (d: any) => string): this;        
+        tooltipYContent(func: (d: any) => string): this;
         /*Deprecated. Use chart.tooltip.enabled or chart.interactive to control if tooltips are enabled or not.*/
         tooltips(): boolean;
         /*Deprecated. Use chart.tooltip.enabled or chart.interactive to control if tooltips are enabled or not.*/
@@ -3230,8 +3272,11 @@ id(value: number|string): this;
         legend: Legend;
         controls: Legend;
         xAxis: Nvd3Axis;
+        x2Axis: Nvd3Axis;
         yAxis: Nvd3Axis;
+        y2Axis: Nvd3Axis;
         tooltip: Tooltip;
+        focus: Focus;
 
         controlLabels(): any;
         /*Object that defines the labels for control items in the graph. For instance, in the stackedAreaChart, there are controls for making it stacked, expanded, or stream. For stacked bar charts, there is stacked and grouped.*/
@@ -3253,7 +3298,7 @@ id(value: number|string): this;
         /*Display or hide the X axis*/
         showXAxis(): boolean;
         /*Display or hide the X axis*/
-        showXAxis(value: boolean): this;        
+        showXAxis(value: boolean): this;
         /*Display or hide the Y axis*/
         showYAxis(): boolean;
         /*Display or hide the Y axis*/
@@ -3270,6 +3315,15 @@ id(value: number|string): this;
         useInteractiveGuideline(): boolean;
         /*Sets the chart to use a guideline and floating tooltip instead of requiring the user to hover over specific hotspots. Turning this on will set the 'interactive' and 'useVoronoi' options to false to avoid conflicting.*/
         useInteractiveGuideline(value: boolean): this;
+
+        focusEnable(): boolean;
+        focusEnable(value: boolean): this;
+        focusHeight(): number;
+        focusHeight(value: number): this;
+        showControls(): boolean;
+        showControls(value: boolean): this;
+        brushExtent(): [number, number] | [[number, number], [number, number]];
+        brushExtent(value: [number, number] | [[number, number], [number, number]]) : this;
     }
 
     interface SunburstChart extends Sunburst, Chart {
@@ -3289,7 +3343,7 @@ id(value: number|string): this;
         noData(value: string): this;
     }
 
-//#endregion     
+//#endregion
 
     interface Models{
         boxPlotChart(): BoxPlotChart;
@@ -3304,7 +3358,7 @@ id(value: number|string): this;
 		historicalBar(): HistoricalBar;
         historicalBarChart(bar_model?: HistoricalBar): HistoricalBarChart;
         ohlcBar(): OhlcBar;
-        ohlcBarChart(): OhlcBarChart;			
+        ohlcBarChart(): OhlcBarChart;
         legend(): Legend;
         line(): Line;
         lineChart(): LineChart;
@@ -3332,11 +3386,11 @@ id(value: number|string): this;
         /*set to false in production*/
         dev: boolean
         /*stores all the ready to use charts*/
-        charts: any 
+        charts: any
         models: Models;
         tooltip: Nvd3TooltipStatic;
         utils: Utils;
-        
+
         /*stores some statistics and potential error messages*/
         logs: any;
 
@@ -3349,3 +3403,7 @@ id(value: number|string): this;
 	}
 }
 declare var nv : nv.Nvd3Static;
+
+declare module "nvd3" {
+    export = nv;
+}

@@ -1,7 +1,7 @@
 // Type definitions for EaselJS 0.8.0
 // Project: http://www.createjs.com/#!/EaselJS
 // Definitions by: Pedro Ferreira <https://bitbucket.org/drk4>, Chris Smith <https://github.com/evilangelist>
-// Definitions: https://github.com/borisyankov/DefinitelyTyped
+// Definitions: https://github.com/DefinitelyTyped/DefinitelyTyped
 
 /*
     Copyright (c) 2012 Pedro Ferreira
@@ -20,7 +20,7 @@ interface NativeMouseEvent extends MouseEvent {
 
 }
 
-declare module createjs {
+declare namespace createjs {
     export class AlphaMapFilter extends Filter {
         constructor(alphaMap: HTMLImageElement | HTMLCanvasElement);
 
@@ -43,7 +43,7 @@ declare module createjs {
 
 
     export class Bitmap extends DisplayObject {
-        constructor(imageOrUrl: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | string);
+        constructor(imageOrUrl: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | Object | string);
 
         // properties
         image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement;
@@ -52,7 +52,22 @@ declare module createjs {
         // methods
         clone(): Bitmap;
     }
+    
+    export class ScaleBitmap extends DisplayObject {
+        constructor(imageOrUrl: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement | Object | string, scale9Grid: Rectangle);
 
+        // properties
+        image: HTMLImageElement | HTMLCanvasElement | HTMLVideoElement;
+        sourceRect: Rectangle;
+        drawWidth: number;
+        drawHeight: number;
+        scale9Grid: Rectangle;
+        snapToPixel: boolean;
+
+        // methods
+        setDrawSize (newWidth: number, newHeight: number): void;
+        clone(): ScaleBitmap;
+    }
 
     export class BitmapText extends DisplayObject {
         constructor(text?:string, spriteSheet?:SpriteSheet);
@@ -161,9 +176,16 @@ declare module createjs {
         tickChildren: boolean;
 
         // methods
-        addChild(...child: DisplayObject[]): DisplayObject;
-        addChildAt(child: DisplayObject, index: number): DisplayObject; // add this for the common case
-        addChildAt(...childOrIndex: any[]): DisplayObject; // actually (...child: DisplayObject[], index: number)
+        addChild<T extends DisplayObject>(child: T): T;
+        addChild<T extends DisplayObject>(child0: DisplayObject, lastChild: T): T;
+        addChild<T extends DisplayObject>(child0: DisplayObject, child1: DisplayObject, lastChild: T): T;
+        addChild<T extends DisplayObject>(child0: DisplayObject, child1: DisplayObject, child2: DisplayObject, lastChild: T): T;
+        addChild(...children: DisplayObject[]): DisplayObject;
+        addChildAt<T extends DisplayObject>(child: T, index: number): T;
+        addChildAt<T extends DisplayObject>(child0: DisplayObject, lastChild: T, index: number): T;
+        addChildAt<T extends DisplayObject>(child0: DisplayObject, child1: DisplayObject, lastChild: T, index: number): T;
+        addChildAt(...childOrIndex: (DisplayObject|number)[]): DisplayObject; // actually (...child: DisplayObject[], index: number)
+
         clone(recursive?: boolean): Container;
         contains(child: DisplayObject): boolean;
         getChildAt(index: number): DisplayObject;
@@ -382,7 +404,7 @@ declare module createjs {
     }
 
 
-    module Graphics
+    namespace Graphics
         {
         export class Arc
             {
@@ -643,6 +665,7 @@ declare module createjs {
         autoReset: boolean;
         static buildDate: string;
         currentFrame: number;
+        totalFrames: number;
         currentLabel: string;
         frameBounds: Rectangle[];
         framerate: number;
@@ -655,6 +678,7 @@ declare module createjs {
         startPosition: number;
         static SYNCHED: string;
         timeline: Timeline;
+        duration: number;
         static version: string;
 
         // methods
