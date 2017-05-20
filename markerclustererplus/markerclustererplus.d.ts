@@ -598,7 +598,7 @@ interface MarkerClusterer extends google.maps.OverlayView {
      * @param {function(Array.<google.maps.Marker>, number)} calculator The value
      *  of the calculator property.
      */
-   setCalculator(calculator: (marker: google.maps.Marker, value: number) => Function): void;
+   setCalculator(calculator: (markers: google.maps.Marker[], value: number) => ClusterIconInfo): void;
    
    /**
      * Sets the value of the <code>hideLabel</code> property.
